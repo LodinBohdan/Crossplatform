@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - lab5</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Index">lab5</a>
+                <ul>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="dropdown">
+                            <p class="btn btn-primary">Лабораторні роботи</p>
+                            <div class="dropdown-menu">
+                                <a asp-controller="Lab" asp-action="Lab1">Лаб 1</a>
+                                <a asp-controller="Lab" asp-action="Lab2">Лаб 2</a>
+                                <a asp-controller="Lab" asp-action="Lab3">Лаб 3</a>
+                            </div>
+                        </li>
+
+                        <li class="dropdown">
+                            <p class="btn btn-primary">Таблиці Лаб 6</p>
+                            <div class="dropdown-menu">
+                                <a asp-controller="ProductsAndServices" asp-action="Index">ProductsAndServices</a>
+                                <a asp-controller="Organization" asp-action="Index">Organization</a>
+                                <a asp-controller="Country" asp-action="Index">Country</a>
+                                <a asp-controller="Location" asp-action="Index">Location</a>
+                                <a asp-controller="MovementLocation" asp-action="Index">MovementLocation</a>
+                            </div>
+                        </li>
+
+                        <li class="dropdown">
+                            <p class="btn btn-primary">Акаунт</p>
+                            <div class="dropdown-menu">
+                                <a asp-controller="Home" asp-action="Profile">Профіль</a>
+                                <a asp-controller="Account" asp-action="Logout">Вийти</a>
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a class="nav-link" asp-controller="Account" asp-action="Login">
+                                <i class="fa fa-sign-in"></i> Увійти
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+    
+</body>
+</html>
